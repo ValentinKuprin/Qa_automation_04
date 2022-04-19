@@ -1,4 +1,4 @@
-package JavaForBeginner;
+package JavaForBeginner.school;
 
 public class Teacher {
 

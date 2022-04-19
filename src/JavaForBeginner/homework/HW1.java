@@ -1,4 +1,4 @@
-package JavaForBeginner;
+package JavaForBeginner.homework;
 
 public class HW1 {
     int a = 10;
