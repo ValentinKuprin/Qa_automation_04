@@ -1,6 +1,6 @@
 package Sergey.HW.Hw7_1;
 
-public class Manager extends Worker{
+public class Manager extends Worker {
 
     int NumberOfSubordinates;
 

@@ -9,7 +9,7 @@ public class Main {
 
 
         Worker[] workers = new Worker[10];
-            Worker worker = new Worker(1100, "Sergey");
+            Worker worker = new Worker(1000, "Sergey");
             Worker worker1 = new Worker(1200, "Grisha");
             Worker worker2 = new Worker(1300, "Misha");
             Worker worker3 = new Worker(1400, "Vasya");
@@ -39,7 +39,7 @@ public class Main {
                                 new Manager(1300, "Ira", 20)};
 
 
-        Director director = new Director(2000, "Temofei", 3);
+        Director director = new Director(2000, "Temofei", 4);
 
 
         System.out.println(UtilitaryClass.findWorkersByName(workers, "Sasha").getName());
@@ -52,6 +52,13 @@ public class Main {
         System.out.println(UtilitaryClass.maxNumberOfSubordinates(manager).getName());
         System.out.println(UtilitaryClass.maxDifferenceBetweenBaseSalaryAndSalary(manager).getSalary());
         System.out.println(UtilitaryClass.minDifferenceBetweenBaseSalaryAndSalary(manager).getSalary());
+
+
+        Worker[] workers1 = {worker, manager[2], director};
+        System.out.println(UtilitaryClass.sumSalary(workers1));
+
+        Worker[] managers = {manager[2], director};
+        System.out.println(UtilitaryClass.minNumberOfSubordinates(manager).getName());
 
 
 
