@@ -7,13 +7,13 @@ import java.util.Arrays;
 
 public class Hw7 {
 
-    public static double arrayAverage(int[] a) {
+    public static int arrayAverage(int[] a) {
         int result = 0;
         for (int i = 0; i < a.length; i++) {
-            result = result + a[i];
+            result += a[i];
         }
 
-        return result / 2;
+        return result / a.length;
     }
 
     public static int[] getMinMaxAvg(int[] array) {
@@ -26,14 +26,10 @@ public class Hw7 {
             if (min > array[i]) {
                 min = array[i];
             }
-        }
-        for (int i = 0; i < array.length; i++) {
             if (max < array[i]) {
                 max = array[i];
             }
-        }
-        for (int i = 0; i < array.length; i++) {
-            sum = sum + array[i];
+            sum += array[i];
         }
         int average = sum / array.length;
 
@@ -41,7 +37,7 @@ public class Hw7 {
         result[1] = max;
         result[2] = average;
         return result;
-    }
+    } //21
 
 
     public static void main(String[] args) {
@@ -274,14 +270,21 @@ public class Hw7 {
          *  Создать массив четных положительных чисел, значения которых не больше 10. (заполняем значения с помощью цикла for)
          */
         Hw5.printTaskNumber();
+        int count = 0;
+        for (int i = 0; i < 11; i++) {
+            if (i % 2 ==0) {
+                count++;
+            }
 
-        int[] evenNumbers1 = new int[6];
+        }
+
+        int[] evenNumbers1 = new int[count];
         for (int i = 0, j = 0; i < evenNumbers1.length; i++, j++) {
             evenNumbers1[i] = j++;
         }
         System.out.println(evenNumbers1[2]);
 ////////////////////////////////////////////////////
-        int[] evenNumbers = new int[6];
+        int[] evenNumbers = new int[6]; // высчитать  длину массива
         int k = 0;
         int b = 0;
         while (k < 6) {
@@ -320,40 +323,42 @@ public class Hw7 {
          * Создать массив нечетных отрицательных чисел в промежутке от -1000 до -900
          */
         Hw5.printTaskNumber();
-
-        ArrayList<Integer> negativeNumber = new ArrayList<Integer>();
+        int count2 = 0;
         for (int i = -1000; i < -900; i++) {
-            negativeNumber.add(i);
+            if (i % 2 != 0) {
+                count2++;
+            }
         }
-        int negNumb = negativeNumber.indexOf(-987);
-        boolean cont = negativeNumber.contains(-964);
-        System.out.println(negNumb);
-        System.out.println(cont);
-        System.out.println(negativeNumber.get(3));
+        int[] ArrayEvenNegativeNum = new int[count2];
+        int a = 0;
+        for (int j = -1000; j < ArrayEvenNegativeNum.length; j++) {
+            if (j % 2 != 0 && a < ArrayEvenNegativeNum.length) {
+                ArrayEvenNegativeNum[a] = j++;
+                a++;
+            }
+        }
+        System.out.println(Arrays.toString(ArrayEvenNegativeNum));
 
-        /** 20
+
+
+        /** 20 //
          * Создать массив из 10 случайных положительных целых чисел
          */
         Hw5.printTaskNumber();
-        ArrayList<Integer> randomNumber = new ArrayList<>();
+        int[] arrayRandomEvenNumb = new int[10];
         for (int i = 0; i < 10; i++) {
-            randomNumber.add(((int) (Math.random() * 100) + 1));
-            System.out.print(randomNumber.get(i));
+            arrayRandomEvenNumb[i] = (int) ((Math.random() * 100) + 1);
+            System.out.print(arrayRandomEvenNumb[i] + " ");
         }
         System.out.println("\n");
 
-        int[] randomNumber1 = new int[10];
-        for (int i = 0; i < 10; i++) {
-            randomNumber1[i] = (int) ((Math.random() * 100) + 1);
-        }
-        System.out.print(randomNumber1[2]);
 
         /** 21
          * Создать метод, который принимает на вход массив int,  и возвращает минимальное значение, максимальное
          * значение и среднее значение всех чисел массива. Проверить работу метода на массиве из задания 20.
          */
         Hw5.printTaskNumber();
-        int[] catsAges1 = {-2, 3, 4, 1, 0, 6, -75, 10};
+        int[] catsAges1 = arrayRandomEvenNumb;
         System.out.println(Arrays.toString(getMinMaxAvg(catsAges1)));
 
 
@@ -364,11 +369,11 @@ public class Hw7 {
 
         int countArrayEven = 0;
         int countArrayOdd = 0;
-        for (int i = 0; i < randomNumber1.length; i++) {
-            if (randomNumber1[i] % 2 == 0) {
-                countArrayEven = countArrayEven + 1;
+        for (int i = 0; i < arrayRandomEvenNumb.length; i++) {
+            if (arrayRandomEvenNumb[i] % 2 == 0) {
+                countArrayEven++;
             } else {
-                countArrayOdd = countArrayOdd + 1;
+                countArrayOdd++;
             }
         }
         System.out.println(countArrayEven);
@@ -378,12 +383,12 @@ public class Hw7 {
         int[] arriveOdd = new int[countArrayOdd];
         int countEven = 0;
         int countOdd = 0;
-        for (int i = 0; i < randomNumber1.length; i++) {
-            if (randomNumber1[i] % 2 == 0) {
-                arriveEven[countEven] = randomNumber1[i];
+        for (int i = 0; i < arrayRandomEvenNumb.length; i++) {
+            if (arrayRandomEvenNumb[i] % 2 == 0 && countEven < arriveEven.length) {
+                arriveEven[countEven] = arrayRandomEvenNumb[i];
                 countEven++;
-            } else {
-                arriveOdd[countOdd] = randomNumber1[i];
+            } else if (countOdd < arriveOdd.length){
+                arriveOdd[countOdd] = arrayRandomEvenNumb[i];
                 countOdd++;
             }
         }
