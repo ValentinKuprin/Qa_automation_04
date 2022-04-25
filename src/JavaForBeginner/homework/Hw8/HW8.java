@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import static JavaForBeginner.Utils.*;
 
+
 public class HW8 {
 
 
@@ -35,34 +36,62 @@ public class HW8 {
 // и возвращает массив тех же чисел, умноженных на 2.5
 
     public static double[] getArrayMultTwoAndHalf(int[] array) {
+        if (array.length > 0) {
+            double[] arrayMult = new double[array.length];
+            for (int i = 0; i < array.length; i++) {
+                arrayMult[i] = array[i] * 2.5;
+            }
+            return arrayMult;
+        }
+        return new double[]{}; // или вернуть тот же array который пришел пустым () если тип соответствует
+    } //10
+
+    public static double[] createArrayByMultiple(int[] array, double a) {
         double[] arrayMult = new double[array.length];
         for (int i = 0; i < array.length; i++) {
-            arrayMult[i] = array[i] * 2.5;
+            arrayMult[i] = array[i] * a;
         }
         return arrayMult;
-    } //10
+    } // 10 способ 2 как сделать без проверки на пустой массив, (возвращаем пустой массив, а если бы захотели вернуть пустой эррэй, он не подошел бы по типу)
+
 
 //11 Написать метод, который принимает на вход массив целых положительных чисел,
 // и возвращает количество четных чисел в этом массиве
 
     public static int getCountEvenNumbers(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 0) {
-                return Integer.MAX_VALUE;
-            } else {
-                int count = 0;
-                if (array.length > 0) {
-                    for (int j = 0; j < array.length; j++) {
-                        if (array[j] >= 0 && array[j] % 2 == 0) {
-                            count++;
+        if (array.length != 0) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    return Integer.MAX_VALUE;
+                } else {
+                    int count = 0;
+                    if (array.length > 0) {
+                        for (int j = 0; j < array.length; j++) {
+                            if (array[j] >= 0 && array[j] % 2 == 0) {
+                                count++;
+                            }
                         }
+                        return count;
                     }
-                    return count;
                 }
             }
         }
         return 0; //при каких условиях вернется 0 ?
     } // 11
+
+    public static int getCountNumbers(int[] array) {
+        if (checkNegativeNumber(array) && array.length != 0) {
+            int count = 0;
+
+                for (int i = 0; i < array.length; i++) {
+                    if (array[i] % 2 == 0)
+                        count++;
+                }
+                return count;
+
+            }
+            return 11111111;
+    }
 
 //12 Написать метод, который принимает на вход массив целых положительных чисел,  и возвращает массив нечетных чисел
 
@@ -194,7 +223,7 @@ public class HW8 {
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * (upper - lower)) + lower;
         }
-         System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(array));
         return array;
     }// 18
 
@@ -283,7 +312,7 @@ public class HW8 {
     }
 // 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-        public static int[] getUniqueArray(int[] array) {
+    public static int[] getUniqueArray(int[] array) {
 //        int count = 0;
 //        if (array.length != 0)
 //            for (int i = 0; i < array.length; i++) {
@@ -298,39 +327,36 @@ public class HW8 {
 //            }
 //                System.out.println(count);
 //         return array;
-            int count = 0;
-            if (array.length != 0) {
-                for (int i = 0; i < array.length - 1; i++) {
-                    if (array[i] != array[i + 1]) {
-                        count++;
-                    }
-                }
-                System.out.println(count);
-                int[] uniqueNum = new int[count];
-                for (int i = 0; i < array.length - 1; i++) {
-                    if (array[i] != array[i + 1]) {
-                        uniqueNum[i] = array[i];
-                    }
-                }
-                return uniqueNum;
-            }
-            return new int[0];
-        }
-
-
-
-
-
-
+//        int count = 0;
+//        if (array.length != 0) {
+//            for (int i = 0; i < array.length - 1; i++) {
+//                if (array[i] != array[i + 1]) {
+//                    count++;
+//                }
+//            }
+//            System.out.println(count);
+//            int[] uniqueNum = new int[count];
+//            for (int i = 0; i < array.length - 1; i++) {
+//                if (array[i] != array[i + 1]) {
+//                    uniqueNum[i] = array[i];
+//                }
+//            }
+//            return uniqueNum;
+//        }
+        return new int[0];
+    }
 
 
     public static void main(String[] args) {
         Hw5.taskNumbere = 1;
+        /** РЕШИТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         *
+         */
         Hw5.printTaskNumber();
 
-        Integer a = 5;
-        Double b = 5.5;
-        String s = "Hello";
+        //  static Integer i_1 = new Integer(5);
+        //  static Double d_1 = new Double(5.5);
+        //  static String str_1 = new String("Hello");
 
         /** 7
          * Написать метод, который принимает на вход 5 целых чисел,  и возвращает массив из этих же чисел
@@ -377,6 +403,11 @@ public class HW8 {
 
         System.out.println("Количество четный чисел в массиве = "
                 + (getCountEvenNumbers(getArray(-1, 2, 3, 4, 5))));
+
+        System.out.println(getCountNumbers(new int[]{1, 2, 3, 4, 5, 6}));
+        System.out.println(getCountNumbers(new int[]{}));
+        System.out.println(getCountNumbers(new int[]{0, 2, 3, 4, 5, 7}));
+        System.out.println(getCountNumbers(new int[]{1, 2, 3, -4, 5, 7}));
 
 
         /** 12
@@ -435,7 +466,6 @@ public class HW8 {
         System.out.println(Arrays.toString(getArrayEvenNumbersOrOddNumbers(randomArrayInt(10, 100, 1))));
 
 
-
         /** 18
          *  Написать метод, который принимает на вход длину массива и генерирует массив случайных
          *  положительных чисел от 0 до 100 исключительно.
@@ -472,7 +502,7 @@ public class HW8 {
          * method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}
          */
 
-        int[] array1 = new int[] {1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
+        int[] array1 = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
         System.out.println(Arrays.toString(getArrayPhoneNomberAndCountryName(array1)));
 
         /** 23
@@ -480,8 +510,7 @@ public class HW8 {
          * и возвращает массив уникальных чисел.
          */
 
-        System.out.println(getUniqueArray(randomArrayInt(15,10,1)));
-
+       // System.out.println(getUniqueArray(randomArrayInt(15, 10, 1)));
 
 
     }
