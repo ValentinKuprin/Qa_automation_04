@@ -6,44 +6,44 @@ import java.util.Arrays;
 
 import static JavaForBeginner.Utils.*;
 
-// {“1(800)123-45-67”, “USA”}
+// 23 Написать метод, который принимает массив целых положительных чисел больше 0,
+// и возвращает массив уникальных чисел.
+
+
 
 public class Hw8_17 {
 
-    public static String[] getArrayPhoneNomberAndCountryName(int[] array) {
-        String str = "";
-        String[] str1 = new String[2];
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[0] == 1) {
-                str1[1] = "USA";
-            }
-            if (i == 1) {
-                str1[0] += "("; //+ Integer.toString(array[i]);
-            }
-            if (i == 4) {
-                str1[0] += ")"; //+ Integer.toString(array[i]);
-            }
-            if (i == 7) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
-            if (i == 9) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
-            str1[0] += (array[i]);
+    public static int[] getUniqueArray(int[] array) {
+       if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
+           for (int i = 0; i< array.length+1; i++) {
+               if (array[i] == array[i+1]) {
+                   array[i+1] = -1;
+               }
+           }
+       }
 
-        }
-        return str1;
+        return new int[]{};
     }
 
-    public static void main (String[]args){
-        int[] array1 = new int[] {1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
 
-        System.out.println(Arrays.toString(getArrayPhoneNomberAndCountryName(array1)));
-            }
+    public static void main(String[] args) {
+        int[] array = new int[] {3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+        int[] array2 = new int[] {1, 1, 1, 1, 1, 1, 1};
+        int[] array3 = new int[] {1, 1, 1, 1, 1, 1, -1};
+        int[] array4 = new int[] {};
+
+        System.out.println(Arrays.toString(getUniqueArray(array)));
+        System.out.println(Arrays.toString(getUniqueArray(array2)));
+        System.out.println(Arrays.toString(getUniqueArray(array3)));
+        System.out.println(Arrays.toString(getUniqueArray(array4)));
 
 
-        }
+
+    }
+}
+
+
 
 
 
