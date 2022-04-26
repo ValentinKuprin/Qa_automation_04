@@ -331,10 +331,21 @@ public class HW8 {
     }
 // 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-    //public static int[] getUniqueArray(int[] array) {}
-
-
-
+    public static int[] getUniqueArray(int[] array) {
+        if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
+            int n = 0;
+            for (int i = 0; i < array.length; i++) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (array[i] == array[j]) {
+                        array[j] = -1;
+                        n++;
+                    }
+                }
+            }
+            return new int[] {array.length - n, n};
+        }
+        return new int[]{};
+    }
 
 
     public static void main(String[] args) {
@@ -501,6 +512,17 @@ public class HW8 {
          * Написать метод, который принимает массив целых положительных чисел больше 0,
          * и возвращает массив уникальных чисел.
          */
+
+        Hw5.printTaskNumber();
+            int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+            // int[] array2 = new int[] {1, 1, 1, 1, 1, 1, 1};
+            // int[] array3 = new int[] {1, 1, 1, 1, 1, 1, -1};
+            // int[] array4 = new int[] {};
+
+            System.out.println(Arrays.toString(getUniqueArray(array)));
+            // System.out.println(Arrays.toString(getUniqueArray(array2)));
+            // System.out.println(Arrays.toString(getUniqueArray(array3)));
+            // System.out.println(Arrays.toString(getUniqueArray(array4)));
 
        // System.out.println(getUniqueArray(randomArrayInt(15, 10, 1)));
 
