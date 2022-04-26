@@ -83,19 +83,20 @@ public class HW8 {
         if (checkNegativeNumber(array) && array.length != 0) {
             int count = 0;
 
-                for (int i = 0; i < array.length; i++) {
-                    if (array[i] % 2 == 0)
-                        count++;
-                }
-                return count;
-
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] % 2 == 0)
+                    count++;
             }
-            return 11111111;
+            return count;
+
+        }
+        return 11111111;
     }
 
 //12 Написать метод, который принимает на вход массив целых положительных чисел,  и возвращает массив нечетных чисел
 
     public static int[] getArrayOddNumbers(int[] array) {
+        //if(array.lenght >0){}
         for (int i = 0; i < array.length; i++) {
             if (array[i] < 0) {
                 return null;
@@ -167,9 +168,13 @@ public class HW8 {
                 multiplicationTable[i] = number * factor;
                 factor++;
             }
+            return multiplicationTable;
         }
-        return multiplicationTable;
+        return new int[]{};
+
     } // как правильно оформить негативные кейсы.
+
+
 
 // 17 Написать метод, который принимает массив целых чисел и возвращает массив четных чисел, если четных чисел больше,
 // или массив нечетных чисел, если нечетных чисел больше
@@ -220,6 +225,9 @@ public class HW8 {
 
     public static int[] randomArrayInt(int columb, int upper, int lower) {
         int[] array = new int[columb];
+        if (array.length <= 0) {
+            return new int[]{};
+        }
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * (upper - lower)) + lower;
         }
@@ -231,6 +239,19 @@ public class HW8 {
 // (однозначные, двузначные, трехзначные и тд числа), и генерирует массив случайных целых положительных чисел
 // длины l, в котором все числа имеют количество знаков d
 
+    public static int[] getArrayLondLAndD(int l, int d) {
+        int[] array = new int[l];
+        if (array.length <= 0) {
+            return array;
+        } else {
+            for (int i = 0; i < array.length; i++) {
+                array[i] = d;//d править
+            }
+        }
+        return  new int[]{}; //править
+    }
+
+
 // 20 Написать метод, который принимает на вход массив целых положительных чисел, и возвращает массив только
 // двузначных чисел. ПРоверить работу метода на массиве из задания 18.
 
@@ -238,17 +259,16 @@ public class HW8 {
         int count = 0;
         if (array.length > 0) {
             for (int i = 0; i < array.length; i++) {
-                if (array[i] / 10 != 0) {
+                if (array[i] > 9 && array[i] < 100) {
                     count++;
                 }
             }
             System.out.println(count);
             int[] arrayDoubleFigures = new int[count];
-            int step = 0;
             for (int i = 0; i < array.length; i++) {
-                if (array[i] / 10 != 0 && arrayDoubleFigures.length <= array.length && array[i] > 0) {
-                    arrayDoubleFigures[step] = array[i];
-                    step++;
+                if (array[i] > 9 && array[i] < 100) {
+                    arrayDoubleFigures[arrayDoubleFigures.length-1] = array[i];
+                    count--;
                 }
             }
             //System.out.println(Arrays.toString(arrayDoubleFigures));
@@ -264,7 +284,7 @@ public class HW8 {
         int count = 0;
         if (array.length > 0) {
             for (int i = 0; i < array.length; i++) {
-                if (array[i] > 0 && array[i] / 10 != 0)
+                if (array[i] > 9 && array[i] / 10 != 0)
                     count++;
             }
         }
@@ -272,8 +292,8 @@ public class HW8 {
         int[] betweenTensAndOnes = new int[count];
         int step = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] / 10 != 0 && betweenTensAndOnes.length <= array.length && array[i] > 0) {
-                betweenTensAndOnes[step] = array[i] / 10 - array[i] % 10;
+            if (array[i] / 10 != 0 && betweenTensAndOnes.length <= array.length && array[i] > 9) {
+                betweenTensAndOnes[step] = Math.abs(array[i] / 10 - array[i] % 10);
                 step++;
             }
         }
@@ -306,45 +326,15 @@ public class HW8 {
                 str1[0] += "-";// + Integer.toString(array[i]);
             }
             str1[0] += (array[i]);
-
         }
         return str1;
     }
 // 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-    public static int[] getUniqueArray(int[] array) {
-//        int count = 0;
-//        if (array.length != 0)
-//            for (int i = 0; i < array.length; i++) {
-//                if (i == array.length - 1) {
-//                    break;
-//                }
-//                if (array[i] > 0 && array[i] == array[i + 1]) {
-//                    System.out.println();
-//                } else {
-//                    count++;
-//                }
-//            }
-//                System.out.println(count);
-//         return array;
-//        int count = 0;
-//        if (array.length != 0) {
-//            for (int i = 0; i < array.length - 1; i++) {
-//                if (array[i] != array[i + 1]) {
-//                    count++;
-//                }
-//            }
-//            System.out.println(count);
-//            int[] uniqueNum = new int[count];
-//            for (int i = 0; i < array.length - 1; i++) {
-//                if (array[i] != array[i + 1]) {
-//                    uniqueNum[i] = array[i];
-//                }
-//            }
-//            return uniqueNum;
-//        }
-        return new int[0];
-    }
+    //public static int[] getUniqueArray(int[] array) {}
+
+
+
 
 
     public static void main(String[] args) {
@@ -444,7 +434,7 @@ public class HW8 {
          * Написать метод, который принимает массив целых чисел и считает сумму чисел во второй половине массива
          */
         Hw5.printTaskNumber();
-        System.out.println(sumOfSecondHalfArray(getArray(1, 5, 7, 8, 9)));
+        System.out.println(sumOfSecondHalfArray(getArray(22, 11, 88, 41, 9)));
 
         /** 16
          * Написать метод, который принимает на вход целое положительные число в пределах от 1 до 10 исключительно, и
@@ -454,7 +444,7 @@ public class HW8 {
         Hw5.printTaskNumber();
         System.out.println(Arrays.toString(getMultiplicationTable(5, 10)));
         System.out.println(Arrays.toString(getMultiplicationTable(3, 20)));
-        System.out.println(Arrays.toString(getMultiplicationTable(0, 10)));
+        System.out.println(Arrays.toString(getMultiplicationTable(-5, 10)));
         System.out.println(Arrays.toString(getMultiplicationTable(11, 10)));
 
 
@@ -473,6 +463,7 @@ public class HW8 {
         Hw5.printTaskNumber();
 
         System.out.println(Arrays.toString(randomArrayInt(10, 100, 1)));
+        System.out.println(Arrays.toString(randomArrayInt(0, 100, 1)));
 
         /** 19
          * Написать метод, который принимает на вход длину массива l и количество знаков d
@@ -486,14 +477,14 @@ public class HW8 {
          * двузначных чисел. ПРоверить работу метода на массиве из задания 18.
          */
         Hw5.printTaskNumber();
-        System.out.println(Arrays.toString(getDoubleFigures(randomArrayInt(10, 100, 1))));
+        System.out.println(Arrays.toString(getDoubleFigures(randomArrayInt(10, 1000, 10))));
 
         /** 21
          *  Написать метод, который принимает на вход массив целых положительных двузначных чисел,
          *  и возвращает массив разниц между десятками и единицами
          */
         Hw5.printTaskNumber();
-        System.out.println(Arrays.toString(getBetweenTensAndOnes(randomArrayInt(10, -100, -5))));
+        System.out.println(Arrays.toString(getBetweenTensAndOnes(randomArrayInt(10, 100, 5))));
 
         /** 22
          * Написать метод, который принимает массив из 11 целых положительных чисел от 0 до 9, и возвращает массив,
@@ -501,6 +492,7 @@ public class HW8 {
          * Например:
          * method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}
          */
+        Hw5.printTaskNumber();
 
         int[] array1 = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
         System.out.println(Arrays.toString(getArrayPhoneNomberAndCountryName(array1)));

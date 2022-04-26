@@ -117,14 +117,14 @@ public class Utils {
 
 
     /** Проверка массива на положительное числа  */
-    public static boolean checkPositiveNumber(int[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > 0) {
-                return false;
-            }
-        }
-        return true;
-    } // Поиск положительного числа в массиве
+   //public static boolean checkPositiveNumber(int[] array) {
+  //      for (int i = 0; i < array.length; i++) {
+  //          if (array[i] > 0) {
+  //              return false;
+  //          }
+  //      }
+  //      return true;
+  //  } // Поиск положительного числа в массиве
 
     /** Проверка массива на отрицательные числа  */
     public static boolean checkNegativeNumber(int[] array) {
@@ -135,6 +135,13 @@ public class Utils {
         }
         return true;
     }//поиск отрицательного числа в массиве
+
+    public static boolean checkLongArrayIsZero(int[] array) {
+        if (array.length == 0 ) {
+            return false;
+        }
+            return true;
+    }
 
 
 
