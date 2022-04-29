@@ -305,33 +305,38 @@ public class HW8 {
 //Например:
 //method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}
 
-    public static String[] getArrayPhoneNomberAndCountryName(int[] array) {
+    public static String[] getArrayPhoneNumberAndCountryName(int[] array) {
         String str = "";
         String[] str1 = new String[2];
 
         for (int i = 0; i < array.length; i++) {
-            if (array[0] == 1) {
+            if (array[i] == 1) {
                 str1[1] = "USA";
             }
-            if (i == 1) {
-                str1[0] += "("; //+ Integer.toString(array[i]);
-            }
-            if (i == 4) {
-                str1[0] += ")"; //+ Integer.toString(array[i]);
-            }
-            if (i == 7) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
-            if (i == 9) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
+         //   if (i == 1) {
+         //       str1[0] += "("; //+ Integer.toString(array[i]);
+         //   }
+         //   if (i == 4) {
+         //       str1[0] += ")"; //+ Integer.toString(array[i]);
+         //   }
+         //   if (i == 7) {
+         //       str1[0] += "-";// + Integer.toString(array[i]);
+         //   }
+         //   if (i == 9) {
+         //       str1[0] += "-";// + Integer.toString(array[i]);
+         //   }
             str1[0] += (array[i]);
         }
         return str1;
     }
 // 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-    public static int[] getUniqueArray(int[] array) {
+    public
+
+// 24 Написать метод, который принимает на вход массив целых положительных чисел, и возвращает количество уникальных
+// и неуникальных элементов в этом массиве
+
+    public static int[] countUniqueNonUnique(int[] array) {
         if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
             int n = 0;
             for (int i = 0; i < array.length; i++) {
@@ -506,23 +511,31 @@ public class HW8 {
         Hw5.printTaskNumber();
 
         int[] array1 = new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7};
-        System.out.println(Arrays.toString(getArrayPhoneNomberAndCountryName(array1)));
+        System.out.println(Arrays.toString(getArrayPhoneNumberAndCountryName(array1)));
 
         /** 23
          * Написать метод, который принимает массив целых положительных чисел больше 0,
          * и возвращает массив уникальных чисел.
          */
 
+
+
+
+        /** 24
+         * Написать метод, который принимает на вход массив целых положительных чисел,
+         * и возвращает количество уникальных и неуникальных элементов в этом массиве
+         */
+
         Hw5.printTaskNumber();
-            int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+        int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
             // int[] array2 = new int[] {1, 1, 1, 1, 1, 1, 1};
             // int[] array3 = new int[] {1, 1, 1, 1, 1, 1, -1};
             // int[] array4 = new int[] {};
 
-            System.out.println(Arrays.toString(getUniqueArray(array)));
-            // System.out.println(Arrays.toString(getUniqueArray(array2)));
-            // System.out.println(Arrays.toString(getUniqueArray(array3)));
-            // System.out.println(Arrays.toString(getUniqueArray(array4)));
+            //System.out.println(Arrays.toString(countUniqueNonUnicue(array)));
+            // System.out.println(Arrays.toString(countUniqueNonUnique(array2)));
+            // System.out.println(Arrays.toString(countUniqueNonUnique(array3)));
+            // System.out.println(Arrays.toString(countUniqueNonUnique(array4)));
 
        // System.out.println(getUniqueArray(randomArrayInt(15, 10, 1)));
 
