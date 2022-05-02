@@ -306,46 +306,47 @@ public class HW8 {
 //method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}
 
     public static String[] getArrayPhoneNomberAndCountryName(int[] array) {
-        String str = "";
-        String[] str1 = new String[2];
+
+        String[] str1 = new String[1];
 
         for (int i = 0; i < array.length; i++) {
-            if (array[0] == 1) {
-                str1[1] = "USA";
-            }
-            if (i == 1) {
-                str1[0] += "("; //+ Integer.toString(array[i]);
-            }
-            if (i == 4) {
-                str1[0] += ")"; //+ Integer.toString(array[i]);
-            }
-            if (i == 7) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
-            if (i == 9) {
-                str1[0] += "-";// + Integer.toString(array[i]);
-            }
             str1[0] += (array[i]);
+           // if (array[0] == 1) {
+           //    str1[1] = "USA";
+           // }
+           // if (i == 1) {
+           //     str1[0] += "(";
+           // }
+           // if (i == 4) {
+           //     str1[0] += ")";
+           // }
+           // if (i == 7) {
+           //     str1[0] += "-";
+           // }
+           // if (i == 9) {
+           //     str1[0] += "-";
+           // }
+
         }
         return str1;
     }
 // 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-    public static int[] getUniqueArray(int[] array) {
-        if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
-            int n = 0;
-            for (int i = 0; i < array.length; i++) {
-                for (int j = i + 1; j < array.length; j++) {
-                    if (array[i] == array[j]) {
-                        array[j] = -1;
-                        n++;
-                    }
-                }
-            }
-            return new int[] {array.length - n, n};
-        }
-        return new int[]{};
-    }
+//    public static int[] getUniqueArray(int[] array) {
+//        if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
+//            int n = 0;
+//            for (int i = 0; i < array.length; i++) {
+//                for (int j = i + 1; j < array.length; j++) {
+//                    if (array[i] == array[j]) {
+//                        array[j] = -1;
+//                        n++;
+//                    }
+//                }
+//            }
+//            return new int[] {array.length - n, n};
+//        }
+//        return new int[]{};
+//    }
 
 
     public static void main(String[] args) {
@@ -514,12 +515,12 @@ public class HW8 {
          */
 
         Hw5.printTaskNumber();
-            int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+          //  int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
             // int[] array2 = new int[] {1, 1, 1, 1, 1, 1, 1};
             // int[] array3 = new int[] {1, 1, 1, 1, 1, 1, -1};
             // int[] array4 = new int[] {};
 
-            System.out.println(Arrays.toString(getUniqueArray(array)));
+           // System.out.println(Arrays.toString(getUniqueArray(array)));
             // System.out.println(Arrays.toString(getUniqueArray(array2)));
             // System.out.println(Arrays.toString(getUniqueArray(array3)));
             // System.out.println(Arrays.toString(getUniqueArray(array4)));

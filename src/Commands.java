@@ -39,6 +39,7 @@ Short    Short.compare(a, b) - разность
 []       Arrays.toString(переменная) - Содержание массива
 []       Arrays.asList
 []       Arrays.deepToString(переменная) - Содержание многомерного массива
+String   String.valueOf();
 String   str.replace ".", "слово" после точки добавить слово
 String   str.charAt(i) - Обращение к элементу строки, возвращает символ по i-позиции
 String   str.indexOf("!", _) - Поиск эллемента в строке (на какое позиции) _ - с какой позиции начать (опционально)
@@ -47,6 +48,11 @@ String   str.replace("!", "-") - Заменить одно значение на
 String   str.repite(i) - повторяет строку n - раз
 String   str.lenght() - длинна строки
 String   str.substring(1, 4) с какого по какой символ вывести Привет = рив
+String   Character.toString('i' - 1); - Печать буквы а не значения символа из ASCII cod
+String   str.compareTo(); - лексикографическое сравнение, сравнивает два string
+пример arrayStr[0].compareTo(Character.toString(arrayChar[0])); если arrayStr[0] < Character.toString(arrayChar[0] - -1,
+  если arrayStr[0] > Character.toString(arrayChar[0] - +1, если arrayStr[0] = Character.toString(arrayChar[0] - 0
+
      subtrack
 
 String split - позволяет разбить строку на подстроки по определенному разделителю.
