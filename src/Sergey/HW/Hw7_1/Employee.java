@@ -1,6 +1,6 @@
 package Sergey.HW.Hw7_1;
 
-public class Employee {
+public abstract class Employee {
     private double baseSalary;
     private String name;;
 
@@ -25,4 +25,6 @@ public class Employee {
     public void setBaseSalary(double baseSalary) {
         this.baseSalary = baseSalary;
     }
+
+    public abstract double getSalary();
 }
