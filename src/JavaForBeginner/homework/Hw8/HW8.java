@@ -6,6 +6,7 @@ import JavaForBeginner.homework.Hw5;
 import java.util.Arrays;
 
 import static JavaForBeginner.Utils.*;
+import static JavaForBeginner.Utils.getUniqueArray;
 
 
 public class HW8 {
@@ -175,7 +176,6 @@ public class HW8 {
     } // как правильно оформить негативные кейсы.
 
 
-
 // 17 Написать метод, который принимает массив целых чисел и возвращает массив четных чисел, если четных чисел больше,
 // или массив нечетных чисел, если нечетных чисел больше
 
@@ -248,7 +248,7 @@ public class HW8 {
                 array[i] = d;//d править
             }
         }
-        return  new int[]{}; //править
+        return new int[]{}; //править
     }
 
 
@@ -267,7 +267,7 @@ public class HW8 {
             int[] arrayDoubleFigures = new int[count];
             for (int i = 0; i < array.length; i++) {
                 if (array[i] > 9 && array[i] < 100) {
-                    arrayDoubleFigures[arrayDoubleFigures.length-1] = array[i];
+                    arrayDoubleFigures[arrayDoubleFigures.length - 1] = array[i];
                     count--;
                 }
             }
@@ -311,42 +311,163 @@ public class HW8 {
 
         for (int i = 0; i < array.length; i++) {
             str1[0] += (array[i]);
-           // if (array[0] == 1) {
-           //    str1[1] = "USA";
-           // }
-           // if (i == 1) {
-           //     str1[0] += "(";
-           // }
-           // if (i == 4) {
-           //     str1[0] += ")";
-           // }
-           // if (i == 7) {
-           //     str1[0] += "-";
-           // }
-           // if (i == 9) {
-           //     str1[0] += "-";
-           // }
+            // if (array[0] == 1) {
+            //    str1[1] = "USA";
+            // }
+            // if (i == 1) {
+            //     str1[0] += "(";
+            // }
+            // if (i == 4) {
+            //     str1[0] += ")";
+            // }
+            // if (i == 7) {
+            //     str1[0] += "-";
+            // }
+            // if (i == 9) {
+            //     str1[0] += "-";
+            // }
 
         }
         return str1;
     }
-// 23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел.
 
-//    public static int[] getUniqueArray(int[] array) {
-//        if (checkLongArrayIsZero(array) && checkNegativeNumber(array)) {
-//            int n = 0;
-//            for (int i = 0; i < array.length; i++) {
-//                for (int j = i + 1; j < array.length; j++) {
-//                    if (array[i] == array[j]) {
-//                        array[j] = -1;
-//                        n++;
+    //23 Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив уникальных чисел
+    public static int[] getUniqueArray(int[] array) {
+        if (array.length == 0) {
+
+            return array;
+        }
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] <= 0) {
+                    return new int[]{-1};
+                }
+                if (array[i] == array[j]) {
+                    array[j] = 666;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != -1) {
+                count++;
+            }
+        }
+        System.out.println(count);
+        int count1 = 0;
+        int[] unicueArray = new int[count];
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != -1) {
+                unicueArray[count1] = array[i];
+                count1++;
+            }
+        }
+        return unicueArray;
+    }
+
+
+// 24 Написать метод, который принимает на вход массив целых положительных чисел,
+// и возвращает количество уникальных и неуникальных элементов в этом массиве
+
+    public static int[] getCountUniqueNonUnique(int[] array) {
+        int n = 0;
+
+        if (array.length > 0) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] >= 0 && array[i] != 666) {
+                    for (int j = i + 1; j < array.length; j++) {
+                        if (array[i] == array[j]) {
+                            array[j] = -1;
+                            n++;
+                        }
+                    }
+                }
+
+            }
+            return new int[]{array.length - n, n};
+        }
+        return new int[]{0,0};
+    } //24
+
+ //25 Написать метод, который принимает на вход массив целых положительных чисел,
+// и 2 целых положительных числа (значения индексов). Метод возвращает массив,
+// который содержит только числа из первого массива в промежутке между индексами.
+ //Например:
+ //method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}
+ public static int[] getArrayFromIndAtoIndB(int[] array, int indexStart, int indexEnd) {
+
+     if (array.length > 0) {
+         int count = 0;
+         if (indexStart >= 0 && indexEnd >= 0) {
+             if (indexStart <= array.length - 1 && indexEnd <= array.length - 1 && indexStart <= indexEnd) {
+                 for (int i = indexStart; i <= indexEnd; i++) {
+                     if (array[i] >= 0) {
+                         count++;
+                     } else {
+                         return new int[]{};
+                     }
+                 }
+                 System.out.println(count);
+                 int[] newArray = new int[count]; // Можно  вычислить без каун, взять конечный индекс - стартовый + 1
+                 int count1 = 0;
+                 for (int i = indexStart; i <= indexEnd; i++) {
+                     newArray[count1] = array[i];
+                     count1++;
+
+                 }
+                 return newArray;
+             }
+             System.out.println("Индекс выходит за пределы массива");
+             return new int[]{};
+         }
+         System.out.println("Неверно указан индекс");
+         return new int[]{};
+     }
+     return new int[]{};
+ }
+//    public static int[] getArrayFromIndAtoIndB(int[] array, int indexStart, int indexEnd) {
+//
+//        if (array.length > 0) {
+//            if (indexStart >= 0 && indexEnd >= 0) {
+//                if (indexStart <= array.length - 1 && indexEnd <= array.length - 1 && indexStart <= indexEnd) {
+//                    int[] newArray = new int[indexEnd - indexStart + 1];
+//                    for (int i = 0; i < newArray.length; i++) {
+//                        if (array[indexStart] >= 0) {
+//                            newArray[i] = array[indexStart];
+//                            indexStart++;
+//                        } else {
+//                            return new int[]{};
+//                        }
 //                    }
+//                    return newArray;
 //                }
+//                System.out.println("Индекс выходит за пределы массива");
+//                return new int[]{};
 //            }
-//            return new int[] {array.length - n, n};
+//            System.out.println("Неверно указан индекс");
+//            return new int[]{};
 //        }
 //        return new int[]{};
-//    }
+//    } ВЕРСИЯ КОРОЧЕ без вычисления длинны массива циклом
+
+
+ // 26 Написать метод, который принимает на вход 2 массива int[] и возвращает
+ // объединенный массив уникальных неповторяющихся элементов
+ public static int[] getUniqueSumArray(int[] array, int[] array1) {
+
+     if (array == null || array1 == null || array.length == 0 && array1.length == 0) {
+         return array;
+     }
+     int[] sumTwoArrays = new int[array.length + array1.length];
+     for (int i = 0; i < array.length; i++) {
+         sumTwoArrays[i] = array[i];
+     }
+     for (int i = 0; i < array1.length; i++) {
+         sumTwoArrays[array.length + i] = array1[i];
+     }
+
+     return getUniqueArray(sumTwoArrays);
+ }
 
 
     public static void main(String[] args) {
@@ -513,19 +634,43 @@ public class HW8 {
          * Написать метод, который принимает массив целых положительных чисел больше 0,
          * и возвращает массив уникальных чисел.
          */
-
         Hw5.printTaskNumber();
-          //  int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
-            // int[] array2 = new int[] {1, 1, 1, 1, 1, 1, 1};
-            // int[] array3 = new int[] {1, 1, 1, 1, 1, 1, -1};
-            // int[] array4 = new int[] {};
+        int[] array = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+        int[] array11 = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        System.out.println(Arrays.toString(getUniqueArray(array)));
 
-           // System.out.println(Arrays.toString(getUniqueArray(array)));
-            // System.out.println(Arrays.toString(getUniqueArray(array2)));
-            // System.out.println(Arrays.toString(getUniqueArray(array3)));
-            // System.out.println(Arrays.toString(getUniqueArray(array4)));
 
-       // System.out.println(getUniqueArray(randomArrayInt(15, 10, 1)));
+        /**
+         * 24 Написать метод, который принимает на вход массив целых положительных чисел,
+         * и возвращает количество уникальных и неуникальных элементов в этом массиве
+         */
+        Hw5.printTaskNumber();
+        int[] array34 = new int[]{3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7, 3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7, 3, 4, 4, 5, 6, 9, 5, 1, 2, 1, 7};
+        int[] array2 = new int[]{1, 1, 1, 1, 1, 1, 1};
+        int[] array3 = new int[]{1, 1, 1, 1, 1, 1, -1};
+        int[] array4 = new int[]{};
+
+        System.out.println(Arrays.toString(getCountUniqueNonUnique(array34)));
+
+        /** 25
+         *Написать метод, который принимает на вход массив целых положительных чисел,
+         * и 2 целых положительных числа (значения индексов). Метод возвращает массив, который содержит
+         * только числа из первого массива в промежутке между индексами.
+         * Например:
+         * method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}
+         */
+
+        int[] array25 = new int[]{1, 2, 3, 4, 5};
+        // int[] array1 = new int[]{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+        System.out.println(Arrays.toString(getArrayFromIndAtoIndB(array25, 1, 4)));
+
+        /** 26
+         *  Написать метод, который принимает на вход 2 массива int[] и возвращает объединенный массив
+         *  уникальных неповторяющихся элементов
+         */
+        int[] array26 = new int[]{1, 2, 3, 4, 5, 13, 12, 7, 9};
+        int[] array26_1 = new int[]{1, 2, 3, 4, 5,7, 9,8, 11 ,17};
+        System.out.println(Arrays.toString(getUniqueSumArray(array26, array26_1)));
 
 
     }

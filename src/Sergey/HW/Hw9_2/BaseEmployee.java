@@ -1,6 +1,8 @@
 package Sergey.HW.Hw9_2;
 
 
+import common.IBaseEmployee;
+
 public abstract  class BaseEmployee implements IBaseEmployee {
 
     private String name;

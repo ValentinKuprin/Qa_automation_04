@@ -1,4 +1,4 @@
-package Sergey.HW.Hw9_2;
+package common;
 
 public interface IBaseEmployee {
     String getName();

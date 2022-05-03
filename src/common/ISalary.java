@@ -2,5 +2,5 @@ package common;
 
 public class ISalary {
 
-    double getSalary();
+    //double getSalary();
 }
