@@ -307,25 +307,26 @@ public class HW8 {
 
     public static String[] getArrayPhoneNomberAndCountryName(int[] array) {
 
-        String[] str1 = new String[1];
+        String[] str1 = new String[2];
 
         for (int i = 0; i < array.length; i++) {
+
+            if (array[i] == 1) {
+               str1[1] = "USA";
+            }
+            if (i == 1) {
+                str1[0] += "(";
+            }
+            if (i == 4) {
+                str1[0] += ")";
+            }
+            if (i == 7) {
+                str1[0] += "-";
+            }
+            if (i == 9) {
+                str1[0] += "-";
+            }
             str1[0] += (array[i]);
-            // if (array[0] == 1) {
-            //    str1[1] = "USA";
-            // }
-            // if (i == 1) {
-            //     str1[0] += "(";
-            // }
-            // if (i == 4) {
-            //     str1[0] += ")";
-            // }
-            // if (i == 7) {
-            //     str1[0] += "-";
-            // }
-            // if (i == 9) {
-            //     str1[0] += "-";
-            // }
 
         }
         return str1;
