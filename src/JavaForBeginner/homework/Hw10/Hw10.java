@@ -53,21 +53,25 @@ public class Hw10 {
      */
 
     public static String getSay(String str) {
+        if (str != null) {
 
-        if (str.isEmpty() == false) {
+            if (str.isEmpty() == false) {
 
-            str.trim();
+                str.trim();
 
-            if (str.length() != str.trim().length()) {
+                if (str.length() != str.trim().length()) {
 
-                return "Лишние пробелы удалены";
-            } else if (str.length() == str.trim().length()) {
+                    return "Лишние пробелы удалены";
+                } else if (str.length() == str.trim().length()) {
 
-                return "Пробелов не было";
+                    return "Пробелов не было";
+                }
+
             }
 
+            return "Строка пустая";
         }
-        return "Строка пустая";
+        return "null";
     }//1
 
     /**
@@ -80,9 +84,16 @@ public class Hw10 {
      * “panda   “ → “pnd”
      */
     public static String RemoveAlla(String str) {
-        if (str.isEmpty()) {
-            return "Строка пустая";
+        if (str == null) {
+
+            return "null";
         }
+            if (str.isEmpty()) {
+
+                return "Строка пустая";
+            }
+
+
         return str.trim().replace("a", "");
     }//2
 
@@ -98,11 +109,16 @@ public class Hw10 {
      */
 
     public static String RemoveAllZeros(String str) {
-        if (str.isEmpty()) {
-            return "Строка пустая";
-        }
-        return str.trim().replace("0", "").replace(" ", "");
+        if (str != null) {
+            if (str.isEmpty()) {
 
+                return "Строка пустая";
+            }
+
+            return str.trim().replace("0", "").replace(" ", "");
+        }
+
+        return "null";
     }//3
 
     /**
@@ -116,12 +132,15 @@ public class Hw10 {
      */
 
     public static String RemoveAllSpaces(String str) {
-        if (str.isEmpty()) {
+        if (str != null) {
+            if (str.isEmpty()) {
 
-            return "Строка пустая";
+                return "Строка пустая";
+            }
+
+            return str.trim().replace(" ", "");
         }
-
-        return str.trim().replace(" ", "");
+        return "null";
     }//4
 
     /**
@@ -133,24 +152,80 @@ public class Hw10 {
      */
 
     public static int getCount(String str) {
-        if (str.isEmpty()) {
-            return -1;
-        }
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == 'a' || str.charAt(i) == 'A') {
-                count++;
+        if (str != null) {
+            if (str.isEmpty()) {
+
+                return -1;
             }
-        }
+            int count = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) == 'a' || str.charAt(i) == 'A') {
+                    count++;
+                }
+            }
+
             return count;
         }
 
+        return Integer.MIN_VALUE;
+
+        }//5
+
     /** 6
-     * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java.
-     */
+     * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java. */
 
     public static boolean getContains(String str) {
-        String str1 = "";
+        if (str != null) {
+            if (str.isEmpty()) {
+                return false;
+            }
+
+            return str.contains("Java");
+        }
+        return false;
+    }
+
+    /** 7
+     * Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
+     * точку и кавычки в конце строки с помощью метода concat()
+     * Test Data:
+     * “One” → ““One.””
+     * “    TWO  “ → ““TWO.””  */
+
+    public static String addQuoteStartStrAndDotEndStr(String str) {
+        if (str != null) {
+            if (str.isEmpty()) {
+
+                return "";
+            }
+            // str.concat(."");
+
+            return "";
+        }
+        return "null";
+    }
+
+    /** 8
+     * Напишите метод, который принимает на вход название города и исправляет написание:
+     * Test Data:
+     * “ташкент” → “Ташкент”
+     * “ЧикаГО” → “Чикаго”
+     */
+
+    public static String getCorrectCity(String str) {
+        if (str != null) {
+            if (str.isEmpty()) {
+
+                return  "Строка пустая";
+            }
+
+        String strLowerCase = str.toLowerCase();
+        String newStr = strLowerCase.substring(0, 1).toUpperCase() + strLowerCase.substring(1);
+
+            return newStr;
+        }
+
+        return "null";
 
     }
 
@@ -186,6 +261,7 @@ public class Hw10 {
         System.out.println(getSay("    QA4Everyone   "));
         System.out.println(getSay("QA4Everyone"));
         System.out.println(getSay(""));
+        System.out.println(getSay(null));
 
 /** 2
  * Написать алгоритм RemoveAlla.
@@ -201,6 +277,7 @@ public class Hw10 {
         System.out.println(RemoveAlla("    QA4Everyone   "));
         System.out.println(RemoveAlla("panda   "));
         System.out.println(RemoveAlla(""));
+        System.out.println(RemoveAlla(null));
 
 /**3
  * Написать алгоритм RemoveAllZeros.
@@ -216,6 +293,7 @@ public class Hw10 {
         System.out.println(RemoveAllZeros("   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 "));
         System.out.println(RemoveAllZeros(" 0000000111"));
         System.out.println(RemoveAllZeros(""));
+        System.out.println(RemoveAllZeros(null));
 
 /**4
  *  Написать алгоритм RemoveAllSpaces.
@@ -229,6 +307,7 @@ public class Hw10 {
         System.out.println(RemoveAllSpaces("    QA   4  Everyone   "));
         System.out.println(RemoveAllSpaces("p a     n d a   "));
         System.out.println(RemoveAllSpaces(""));
+        System.out.println(RemoveAllSpaces(null));
 
 /**5
  *Напишите метод, который принимает на вход строку и считает, сколько букв а или А содержится в строке.
@@ -242,35 +321,63 @@ public class Hw10 {
         System.out.println(getCount("Abracadabra"));
         System.out.println(getCount("Homenum Revelio"));
         System.out.println(getCount(""));
+        System.out.println(getCount(null));
 
  /** 6
-  * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java.
-  * “As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current long-term support
-  * (LTS) versions. Oracle released the last zero-cost public update for the legacy version Java 8 LTS in
-  * January 2019 for commercial use, although it will otherwise still support Java 8 with public updates
-  * for personal use indefinitely. Other vendors have begun to offer zero-cost builds of OpenJDK 8 and 11
-  * that are still receiving security and other upgrades.” → true
-  *
-  * “As a decrepit father takes delight
-  * To see his active child do deeds of youth,
-  * So I, made lame by fortune’s dearest spite,
-  * Take all my comfort of thy worth and truth.
-  * For whether beauty, birth, or wealth, or wit,
-  * Or any of these all, or all, or more,
-  * Entitled in thy parts do crownèd sit,
-  * I make my love engrafted to this store.
-  * So then I am not lame, poor, nor despised,
-  * Whilst that this shadow doth such substance give
-  * That I in thy abundance am sufficed,
-  * And by a part of all thy glory live.
-  * Look what is best, that best I wish in thee.
-  * This wish I have; then ten times happy me.” → false
-  */
+  * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java. */
+
+   String str6 = "As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current" +
+           " long-term support (LTS) versions. Oracle released the last zero-cost public update for the " +
+           "legacy version Java 8 LTS in January 2019 for commercial use, although it will otherwise still " +
+           "support Java 8 with public updates for personal use indefinitely. Other vendors have begun to offer " +
+           "zero-cost builds of OpenJDK 8 and 11 that are still receiving security and other upgrades.";
+
+   String str6_1 = "As a decrepit father takes delight\n" +
+           "To see his active child do deeds of youth,\n" +
+           "So I, made lame by fortune’s dearest spite,\n" +
+           "Take all my comfort of thy worth and truth.\n" +
+           "For whether beauty, birth, or wealth, or wit,\n" +
+           "Or any of these all, or all, or more,\n" +
+           "Entitled in thy parts do crownèd sit,\n" +
+           "I make my love engrafted to this store.\n" +
+           "So then I am not lame, poor, nor despised,\n" +
+           "Whilst that this shadow doth such substance give\n" +
+           "That I in thy abundance am sufficed,\n" +
+           "And by a part of all thy glory live.\n" +
+           "Look what is best, that best I wish in thee.\n" +
+           "This wish I have; then ten times happy me.";
 
 
-        public static boolean getContains(String str) {
+        printTaskNumber();
+        System.out.println(getContains(str6));
+        System.out.println(getContains(str6_1));
+        System.out.println(getContains(null));
 
-        }
+        /** 7
+         * Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
+         * точку и кавычки в конце строки с помощью метода concat()
+         * Test Data:
+         * “One” → ““One.””
+         * “    TWO  “ → ““TWO.””
+         */
+
+        printTaskNumber();
+
+
+        /** 8
+         * Напишите метод, кторый принимает на вход название города и исправляет написание:
+         * Test Data:
+         * “ташкент” → “Ташкент”
+         * “ЧикаГО” → “Чикаго”
+         */
+
+        printTaskNumber();
+
+        System.out.println(getCorrectCity("ташкент"));
+        System.out.println(getCorrectCity("ЧикаГО"));
+        System.out.println(getCorrectCity(null));
+
+
 
 
 
