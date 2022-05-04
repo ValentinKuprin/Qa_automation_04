@@ -31,8 +31,7 @@ Alt + Enter - импорт, ошибка, возможные варианты
      Arrays.deepToString(b) - Распечатать многострочный массив.
      !array[i][j].contains("е") - Массив НЕ содержит букву "e" ("!"- НЕ)
      .toString - Преобразовать в строку
-     .toLowerCase() - привести к строчному шрифту
-     .toUpperCase() -
+
 
 boolen   a.equals(b) - сравнить две переменные ()
          compare(int a, int b) (Сравнение (результат 1, 0, -1)
@@ -44,24 +43,26 @@ Short    Short.compare(a, b) - разность
 String   String.valueOf();
 String   str.lenght() - длинна строки
 String   str.isEmpty(); - проверка строки на пустоту  true - пустая /false - непустая
-String   str.charAt(i) - Обращение к элементу строки, возвращает символ по i-позиции
-String   str.indexOf("!", _) - Поиск элемента в строке (на какое позиции) _ - с какой позиции начать (опционально)
-String   str.lastIndexOf(!, 2) Поиск элемента в справа на лево (на какое позиции) начиная со 2 позиции
-String   str.replace("!", "-") - Заменить одно значение на другое (! на -)
+String     str.toLowerCase() - привести к строчному шрифту
+String     str.toUpperCase() - привести к заглавный шрифту
+String   str.replace("!", "-") - Заменить одно значение на другое (! на -) учитывать регистр.
 String   str.replace (".", "слово") после точки добавить слово
 String   str.repite(i) - повторяет строку n - раз
-String   str.substring(1, 4) с какого по какой символ вывести Привет = рив (4 не включит.)
+String   str.charAt(index) - Обращение к элементу строки, возвращает символ i-позиции начинается с 0, последний lenght-1.
+String   str.indexOf("!", _) - Поиск элемента в строке (на какое позиции) _ - с какой позиции начать (опционально)
+String   str.lastIndexOf(!, 2) Поиск элемента в справа на лево (на какое позиции) начиная со 2 позиции
+String   str.substring(1, 4) с какого по какой символ вывести(1вкл., 4 не вкл.) Привет = рив (4-инд не включит.)  (2) - начиная с 3-его = ивет
 String   str.trim() - Удалить пробелы перед и после слова.
 String   split - позволяет разбить строку на подстроки по определенному разделителю.
-String   Character.toString('i' - 1); - Печать буквы а не значения символа из ASCII cod
 String   str.compareTo(); - лексикографическое сравнение, сравнивает два string
+String   str.concat("add_words")); // добавить к строке (конкатинация)
+String   str.contains("bc")); // содержит / не содержит "bc"  true / false; учитывать регистр !
 пример arrayStr[0].compareTo(Character.toString(arrayChar[0])); если arrayStr[0] < Character.toString(arrayChar[0] - -1,
   если arrayStr[0] > Character.toString(arrayChar[0] - +1, если arrayStr[0] = Character.toString(arrayChar[0] - 0
-
+String   Character.toString('i' - 1); - Печать буквы а не значения символа из ASCII cod
      subtrack
-
-
 String[] split(String regex) Метод возвращает массив строк. Метод принимает строку regex в качестве параметра.
+
 
      a.getClass - Вывести класс переменной
 numberInteger instanceof Integer (мы справшиваем этот клас такой то? и получаем ответ true or false)
