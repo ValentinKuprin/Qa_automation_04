@@ -7,6 +7,7 @@ package JavaForBeginner.homework.Hw10;
 import JavaForBeginner.homework.Hw5;
 
 import java.sql.SQLOutput;
+import java.util.Arrays;
 
 import static JavaForBeginner.homework.Hw5.printTaskNumber;
 import static JavaForBeginner.homework.Hw5.taskNumbere;
@@ -294,16 +295,71 @@ public class Hw10 {
         public static String[] getStringArray(String str) {
             if (str != null) {
                 if (str.isEmpty()) {
+
                     return new String[]{"Строка пустая"};
                 }
                 String[] arrayStr = str.split(" ");
                 for (int i = 0; i < arrayStr.length; i++) { // вывод массива
                     System.out.println(arrayStr[i]);
                 }
+
                 return arrayStr;
             }
+
             return new String[]{"null"};
         } //11
+
+/** 12
+ * Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии, отчества и возвращает массив строк:
+ * Test Data:
+ * “Александр Сергеевич Пушкин” →
+ * {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+ */
+
+public static String[] getArrayFIO(String str) {
+    if (str != null) {
+        if (str.isEmpty()) {
+
+            return new String[]{"Пустая строка"};
+        }
+        String[] arrayStr = str.split(" ");
+        for (int i = 0; i < arrayStr.length; i++) {
+            if (i == 0) {
+                arrayStr[i] = "Имя: " + arrayStr[i];
+            } else if (i == 1) {
+                arrayStr[i] = "Отчество: " + arrayStr[i];
+            } else {
+                arrayStr[i] = "Фамилия: " + arrayStr[i];
+            }
+        }
+
+        return arrayStr;
+    }
+
+    return new String[]{"null"};
+}//12
+
+/** 13
+ * Написать метод, который возвращает сумму всех букв слова
+ *
+ * “abc” → 294
+ * “ABC” → 198
+ * “123” → 0 (это не буквы)   */
+
+        public static int getSumOfNumbers(String str) {
+            if (str != null) {
+                if (str.isEmpty()) {
+                    return 0;
+                }
+                int sum = 0;
+                for (int i = 0; i < str.length(); i++) {
+                    sum+= str.charAt(i);
+                }
+                return sum;
+            }
+            return Integer.MIN_VALUE;
+        }// 13 ввести проверку на цифры
+
 
 
 
@@ -504,6 +560,36 @@ public class Hw10 {
         System.out.println(getStringArray("Александр Сергеевич Пушкин"));
         System.out.println(getStringArray(""));
         System.out.println(getStringArray(null));
+
+/** 12
+ * Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии, отчества и возвращает массив строк:
+ * Test Data:
+ * “Александр Сергеевич Пушкин” →
+ * {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+ */
+
+
+        printTaskNumber();
+
+        String arrayFIO = "Александр Сергеевич Пушкин";
+        System.out.println(Arrays.toString(getArrayFIO(arrayFIO)));
+        System.out.println(Arrays.toString(getArrayFIO("")));
+        System.out.println(Arrays.toString(getArrayFIO(null)));
+   //     System.out.println(Arrays.toString(getArrayFIO()));
+
+/** 13
+ * Написать метод, который возвращает сумму всех букв слова
+ *
+ * “abc” → 294
+ * “ABC” → 198
+ * “123” → 0 (это не буквы)   */
+
+        printTaskNumber();
+
+
+        System.out.println(getSumOfNumbers("abc"));
+        System.out.println(getSumOfNumbers("ABC"));
+        System.out.println(getSumOfNumbers("abc"));
 
 
 
