@@ -227,7 +227,83 @@ public class Hw10 {
 
         return "null";
 
-    }
+    }//8
+
+    /** 9
+     * Напишите метод, который принимает на вход строку, и возвращает все,
+     * что находится между первой и последней буквой-параметром:
+     * Test Data:
+     * “Abracadabra”, “b” → “bracadab”
+     * “Whippersnapper”, “p” → “ppersnapp”  */
+
+    public static String getBetweenStartChairAndLastChair(String str, char param) {
+        if (str != null) {
+            if (str.isEmpty()) {
+
+                return "Строка пустая";
+            }
+            String newStr1 = (str.substring(str.indexOf(param), str.lastIndexOf(param) +1));
+
+
+            return newStr1;
+        }
+
+        return "null";
+    } //9
+
+/**10
+ * Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
+ * и заканчивается на одинаковую букву, и faulse иначе
+ * Test Data:
+ * 	“Abracadabra” → true
+ * 	“Whippersnapper” → false  */
+
+        public static boolean getCompareStartCharAndLastChar(String str) {
+            if (str != null) {
+                if (!str.isEmpty()) {
+                    str = str.toLowerCase();
+                    boolean one =
+                            Character.toString(str.charAt(0)).equals(Character.toString(str.charAt(str.length()-1)));
+
+                    return one;
+                }
+                return false;
+            }
+            return false;
+}//10 метод 1
+
+    public static boolean getCompareStartCharAndLastCharV2(String str) {
+        if (str != null) {
+            if (!str.isEmpty()) {
+                str = str.toLowerCase();
+                boolean two = str.substring(0, 1).equals(str.substring(str.length()-1));
+
+                return two;
+            }
+            return false;
+        }
+        return false;
+    }//10 метод 2
+
+ /** 11
+  * Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения в виде массива слов
+  * Test Data:
+  * “QA for Everyone” → {“QA”, “for”, “Everyone”}
+  * “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}  */
+
+        public static String[] getStringArray(String str) {
+            if (str != null) {
+                if (str.isEmpty()) {
+                    return new String[]{"Строка пустая"};
+                }
+                String[] arrayStr = str.split(" ");
+                for (int i = 0; i < arrayStr.length; i++) { // вывод массива
+                    System.out.println(arrayStr[i]);
+                }
+                return arrayStr;
+            }
+            return new String[]{"null"};
+        } //11
 
 
 
@@ -353,29 +429,90 @@ public class Hw10 {
         System.out.println(getContains(str6_1));
         System.out.println(getContains(null));
 
-        /** 7
-         * Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
-         * точку и кавычки в конце строки с помощью метода concat()
-         * Test Data:
-         * “One” → ““One.””
-         * “    TWO  “ → ““TWO.””
-         */
+/** 7
+ * Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
+ * точку и кавычки в конце строки с помощью метода concat()
+ * Test Data:
+ * “One” → ““One.””
+ * “    TWO  “ → ““TWO.””
+ */
 
         printTaskNumber();
 
 
-        /** 8
-         * Напишите метод, кторый принимает на вход название города и исправляет написание:
-         * Test Data:
-         * “ташкент” → “Ташкент”
-         * “ЧикаГО” → “Чикаго”
-         */
+/** 8
+ * Напишите метод, кторый принимает на вход название города и исправляет написание:
+ * Test Data:
+ * “ташкент” → “Ташкент”
+ * “ЧикаГО” → “Чикаго”
+ */
 
         printTaskNumber();
 
         System.out.println(getCorrectCity("ташкент"));
         System.out.println(getCorrectCity("ЧикаГО"));
         System.out.println(getCorrectCity(null));
+
+/** 9
+ * Напишите метод, который принимает на вход строку, и возвращает все,
+ * что находится между первой и последней буквой-параметром:
+ * Test Data:
+ * “Abracadabra”, “b” → “bracadab”
+ * “Whippersnapper”, “p” → “ppersnapp”  */
+
+        printTaskNumber();
+
+        String str9 = "Abracadabra";
+        String str9_1 = "Whippersnapper";
+
+        System.out.println(getBetweenStartChairAndLastChair(str9, 'b'));
+        System.out.println(getBetweenStartChairAndLastChair(str9_1, 'p'));
+        System.out.println(getBetweenStartChairAndLastChair(null, 'n'));
+
+/**10
+ * Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
+ * и заканчивается на одинаковую букву, и faulse иначе
+ * Test Data:
+ * 	“Abracadabra” → true
+ * 	“Whippersnapper” → false
+ */
+
+        printTaskNumber();
+
+        String str10 = "Abracadabra";
+        String str10_1 = "Whippersnapper";
+
+        System.out.println(getCompareStartCharAndLastChar(str10));
+        System.out.println(getCompareStartCharAndLastChar(str10_1));
+        System.out.println(getCompareStartCharAndLastChar(""));
+        System.out.println(getCompareStartCharAndLastChar(null));
+
+        System.out.println(getCompareStartCharAndLastCharV2(str10));
+        System.out.println(getCompareStartCharAndLastCharV2(str10_1));
+        System.out.println(getCompareStartCharAndLastCharV2(""));
+        System.out.println(getCompareStartCharAndLastCharV2(null));
+
+/** 11
+ * Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения в виде массива слов
+ * Test Data:
+ * “QA for Everyone” → {“QA”, “for”, “Everyone”}
+ * “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}  */
+
+        printTaskNumber();
+
+        System.out.println(getStringArray("QA for Everyone").toString());
+        System.out.println(getStringArray("Александр Сергеевич Пушкин"));
+        System.out.println(getStringArray(""));
+        System.out.println(getStringArray(null));
+
+
+
+
+
+
+
+
+
 
 
 

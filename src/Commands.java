@@ -49,19 +49,21 @@ String   str.replace("!", "-") - Заменить одно значение на
 String   str.replace (".", "слово") после точки добавить слово
 String   str.repite(i) - повторяет строку n - раз
 String   str.charAt(index) - Обращение к элементу строки, возвращает символ i-позиции начинается с 0, последний lenght-1.
-String   str.indexOf("!", _) - Поиск элемента в строке (на какое позиции) _ - с какой позиции начать (опционально)
-String   str.lastIndexOf(!, 2) Поиск элемента в справа на лево (на какое позиции) начиная со 2 позиции
+String   str.indexOf("!") - Поиск элемента в строке (на какое позиции) indexOf("!", 4) - с какой позиции начать (опционально) если ничего не найдено вернет -1.
+String   str.lastIndexOf(!, 2) Поиск элемента в справа на лево (на какое позиции) начиная со 2 позиции, если ничего не найдено вернет -1.
 String   str.substring(1, 4) с какого по какой символ вывести(1вкл., 4 не вкл.) Привет = рив (4-инд не включит.)  (2) - начиная с 3-его = ивет
+         str.substring(str.indexOf('a'), str.lastIndexOf('a') +1) - выводит подстроку от первой 'a' вкл до последней 'a' не вкл (+1) для вкл. последней 'а'
 String   str.trim() - Удалить пробелы перед и после слова.
-String   split - позволяет разбить строку на подстроки по определенному разделителю.
-String   str.compareTo(); - лексикографическое сравнение, сравнивает два string
+String   str.split("-") - позволяет разбить строку на подстроки по определенному разделителю например "-".
+String[] split(String regex) Метод возвращает массив строк. Метод принимает строку regex в качестве параметра.
 String   str.concat("add_words")); // добавить к строке (конкатинация)
 String   str.contains("bc")); // содержит / не содержит "bc"  true / false; учитывать регистр !
+String   str.compareTo(); - лексикографическое сравнение, сравнивает два string
 пример arrayStr[0].compareTo(Character.toString(arrayChar[0])); если arrayStr[0] < Character.toString(arrayChar[0] - -1,
   если arrayStr[0] > Character.toString(arrayChar[0] - +1, если arrayStr[0] = Character.toString(arrayChar[0] - 0
 String   Character.toString('i' - 1); - Печать буквы а не значения символа из ASCII cod
      subtrack
-String[] split(String regex) Метод возвращает массив строк. Метод принимает строку regex в качестве параметра.
+
 
 
      a.getClass - Вывести класс переменной
