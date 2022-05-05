@@ -353,12 +353,40 @@ public static String[] getArrayFIO(String str) {
                 }
                 int sum = 0;
                 for (int i = 0; i < str.length(); i++) {
+                    if (!(str.charAt(i) >= 'A' && str.charAt(i) <= 'z')) {
+                        return 0;
+                    }
                     sum+= str.charAt(i);
                 }
                 return sum;
             }
             return Integer.MIN_VALUE;
-        }// 13 ввести проверку на цифры
+        }//
+
+/** 14
+ * Написать метод,  который принимает на вход 2 буквы и возвращает true,
+ * если первая буква встречается раньше второй, иначе метод возвращает false
+ * method(“a”, “m”) → true
+ * method(“m”, “l”) → false   */
+
+        public static boolean getInfoAboutLetter (String letterA, String letterB) {
+            if (letterA != null && letterB != null) {
+                if (letterA.length() == 1 && letterB.length() == 1) {
+                    if (letterA.charAt(0) >= 'A' && letterA.charAt(0) <= 'z'
+                             &&  letterB.charAt(0) >= 'A' && letterB.charAt(0) <= 'z') {
+                        if (letterA.charAt(0) < letterB.charAt(0)) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    return false;//"не буква";
+                }
+                return false;//"длинна";
+
+            }
+            return false;//"false null"
+
+        }
 
 
 
@@ -586,10 +614,31 @@ public static String[] getArrayFIO(String str) {
 
         printTaskNumber();
 
-
         System.out.println(getSumOfNumbers("abc"));
         System.out.println(getSumOfNumbers("ABC"));
-        System.out.println(getSumOfNumbers("abc"));
+        System.out.println(getSumOfNumbers("123"));
+        System.out.println(getSumOfNumbers("A"));
+        System.out.println(getSumOfNumbers("z"));
+        System.out.println(getSumOfNumbers(null));
+        System.out.println(getSumOfNumbers(""));
+        System.out.println(getSumOfNumbers("@"));
+        System.out.println(getSumOfNumbers("{"));
+        System.out.println(getSumOfNumbers("a3c"));
+        System.out.println(getSumOfNumbers("a3c5"));
+        System.out.println(getSumOfNumbers("1a3c"));
+
+ /** 14
+  * Написать метод,  который принимает на вход 2 буквы и возвращает true,
+  * если первая буква встречается раньше второй, иначе метод возвращает false
+  * method(“a”, “m”) → true
+  * method(“m”, “l”) → false   */
+
+        printTaskNumber();
+
+        System.out.println(getInfoAboutLetter("a", "2"));
+
+
+
 
 
 
