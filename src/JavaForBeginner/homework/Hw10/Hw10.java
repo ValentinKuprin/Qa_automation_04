@@ -368,6 +368,13 @@ public class Hw10 {
         return Integer.MIN_VALUE;
     }// 13 ввести проверку на цифры
 
+    public static boolean isCompare(char char1, char char2) {
+        if (char1 < char2) {
+            return true;
+        }
+        return false;
+    }//14
+
 
 
 
