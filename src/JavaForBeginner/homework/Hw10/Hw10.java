@@ -55,19 +55,15 @@ public class Hw10 {
 
     public static String getSay(String str) {
         if (str != null) {
+            if (!str.isEmpty() && str.trim().length() > 0) {
 
-            if (str.isEmpty() == false) {
-
-                str.trim();
-
-                if (str.length() != str.trim().length()) {
+                if (str.equals(str.trim())) {
 
                     return "Лишние пробелы удалены";
-                } else if (str.length() == str.trim().length()) {
+                } else {
 
                     return "Пробелов не было";
                 }
-
             }
 
             return "Строка пустая";
@@ -89,10 +85,10 @@ public class Hw10 {
 
             return "null";
         }
-            if (str.isEmpty()) {
+        if (str.isEmpty()) {
 
-                return "Строка пустая";
-            }
+            return "Строка пустая";
+        }
 
 
         return str.trim().replace("a", "");
@@ -156,7 +152,7 @@ public class Hw10 {
         if (str != null) {
             if (str.isEmpty()) {
 
-                return -1;
+                return 0;
             }
             int count = 0;
             for (int i = 0; i < str.length(); i++) {
@@ -170,15 +166,21 @@ public class Hw10 {
 
         return Integer.MIN_VALUE;
 
-        }//5
+    }//5
+    public static int getCountV2(String str) {
+        return str.length()
+                - str.toLowerCase()
+                .replace("a", "")
+                .length();
+    }
 
     /** 6
      * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java. */
 
-    public static boolean getContains(String str) {
+    public static boolean isContainsJavaWords(String str) {
         if (str != null) {
-            if (str.isEmpty()) {
-                return false;
+            if (!str.isEmpty()) {
+                return true;
             }
 
             return str.contains("Java");
@@ -195,12 +197,12 @@ public class Hw10 {
 
     public static String addQuoteStartStrAndDotEndStr(String str) {
         if (str != null) {
-            if (str.isEmpty()) {
+            if (!str.isEmpty()) {
+                str = str.trim();
 
-                return "";
+                return "\"" + str + ".\"";
+
             }
-            // str.concat(."");
-
             return "";
         }
         return "null";
@@ -215,15 +217,16 @@ public class Hw10 {
 
     public static String getCorrectCity(String str) {
         if (str != null) {
+            String strLowerCase = str.trim().toLowerCase();
             if (str.isEmpty()) {
 
                 return  "Строка пустая";
             }
 
-        String strLowerCase = str.toLowerCase();
-        String newStr = strLowerCase.substring(0, 1).toUpperCase() + strLowerCase.substring(1);
-
-            return newStr;
+            return strLowerCase.substring(0, 1)
+                    .toUpperCase()
+                    .concat(strLowerCase
+                            .substring(1));
         }
 
         return "null";
@@ -243,41 +246,44 @@ public class Hw10 {
 
                 return "Строка пустая";
             }
-            String newStr1 = (str.substring(str.indexOf(param), str.lastIndexOf(param) +1));
 
-
-            return newStr1;
+            return (str.substring(str.indexOf(param),
+                    str.lastIndexOf(param) +1));
         }
 
         return "null";
     } //9
 
-/**10
- * Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
- * и заканчивается на одинаковую букву, и faulse иначе
- * Test Data:
- * 	“Abracadabra” → true
- * 	“Whippersnapper” → false  */
+    /**10
+     * Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
+     * и заканчивается на одинаковую букву, и faulse иначе
+     * Test Data:
+     *     “Abracadabra” → true
+     *     “Whippersnapper” → false  */
 
-        public static boolean getCompareStartCharAndLastChar(String str) {
-            if (str != null) {
-                if (!str.isEmpty()) {
-                    str = str.toLowerCase();
-                    boolean one =
-                            Character.toString(str.charAt(0)).equals(Character.toString(str.charAt(str.length()-1)));
-
-                    return one;
-                }
-                return false;
-            }
-            return false;
-}//10 метод 1
-
-    public static boolean getCompareStartCharAndLastCharV2(String str) {
+    public static boolean isEqualsStartCharAndLastChar(String str) {
         if (str != null) {
             if (!str.isEmpty()) {
-                str = str.toLowerCase();
-                boolean two = str.substring(0, 1).equals(str.substring(str.length()-1));
+                str = str.trim()
+                        .toLowerCase();
+                boolean one =
+                        Character.toString(str.charAt(0))
+                                .equals(Character.toString(str.charAt(str.length()-1)));
+
+                return one;
+            }
+            return false;
+        }
+        return false;
+    }//10 метод 1
+
+    public static boolean isEqualsStartCharAndLastCharV2(String str) {
+        if (str != null) {
+            if (!str.isEmpty()) {
+                str = str.trim().
+                        toLowerCase();
+                boolean two = str.substring(0, 1)
+                        .equals(str.substring(str.length()-1));
 
                 return two;
             }
@@ -286,107 +292,81 @@ public class Hw10 {
         return false;
     }//10 метод 2
 
- /** 11
-  * Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения в виде массива слов
-  * Test Data:
-  * “QA for Everyone” → {“QA”, “for”, “Everyone”}
-  * “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}  */
+    /** 11
+     * Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения в виде массива слов
+     * Test Data:
+     * “QA for Everyone” → {“QA”, “for”, “Everyone”}
+     * “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}  */
 
-        public static String[] getStringArray(String str) {
-            if (str != null) {
-                if (str.isEmpty()) {
+    public static String[] getStringArray(String str) {
+        if (str != null) {
+            if (str.isEmpty()) {
 
-                    return new String[]{"Строка пустая"};
-                }
-                String[] arrayStr = str.split(" ");
-                for (int i = 0; i < arrayStr.length; i++) { // вывод массива
-                    System.out.println(arrayStr[i]);
-                }
-
-                return arrayStr;
+                return new String[]{"Строка пустая"};
             }
+            String[] arrayStr = str.split(" ");
+            //    for (int i = 0; i < arrayStr.length; i++) { // вывод массива
+            //        System.out.println(arrayStr[i]);
+            //    }
 
-            return new String[]{"null"};
-        } //11
-
-/** 12
- * Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии, отчества и возвращает массив строк:
- * Test Data:
- * “Александр Сергеевич Пушкин” →
- * {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
- */
-
-public static String[] getArrayFIO(String str) {
-    if (str != null) {
-        if (str.isEmpty()) {
-
-            return new String[]{"Пустая строка"};
-        }
-        String[] arrayStr = str.split(" ");
-        for (int i = 0; i < arrayStr.length; i++) {
-            if (i == 0) {
-                arrayStr[i] = "Имя: " + arrayStr[i];
-            } else if (i == 1) {
-                arrayStr[i] = "Отчество: " + arrayStr[i];
-            } else {
-                arrayStr[i] = "Фамилия: " + arrayStr[i];
-            }
+            return arrayStr;
         }
 
-        return arrayStr;
-    }
+        return new String[]{"null"};
+    } //11
 
-    return new String[]{"null"};
-}//12
+    /** 12
+     * Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии, отчества и возвращает массив строк:
+     * Test Data:
+     * “Александр Сергеевич Пушкин” →
+     * {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+     */
 
-/** 13
- * Написать метод, который возвращает сумму всех букв слова
- *
- * “abc” → 294
- * “ABC” → 198
- * “123” → 0 (это не буквы)   */
+    public static String[] getArrayFIO(String str) {
+        if (str != null) {
+            if (str.isEmpty()) {
 
-        public static int getSumOfNumbers(String str) {
-            if (str != null) {
-                if (str.isEmpty()) {
-                    return 0;
-                }
-                int sum = 0;
-                for (int i = 0; i < str.length(); i++) {
-                    if (!(str.charAt(i) >= 'A' && str.charAt(i) <= 'z')) {
-                        return 0;
-                    }
-                    sum+= str.charAt(i);
-                }
-                return sum;
+                return new String[]{"Пустая строка"};
             }
-            return Integer.MIN_VALUE;
-        }//
-
-/** 14
- * Написать метод,  который принимает на вход 2 буквы и возвращает true,
- * если первая буква встречается раньше второй, иначе метод возвращает false
- * method(“a”, “m”) → true
- * method(“m”, “l”) → false   */
-
-        public static boolean getInfoAboutLetter (String letterA, String letterB) {
-            if (letterA != null && letterB != null) {
-                if (letterA.length() == 1 && letterB.length() == 1) {
-                    if (letterA.charAt(0) >= 'A' && letterA.charAt(0) <= 'z'
-                             &&  letterB.charAt(0) >= 'A' && letterB.charAt(0) <= 'z') {
-                        if (letterA.charAt(0) < letterB.charAt(0)) {
-                            return true;
-                        }
-                        return false;
-                    }
-                    return false;//"не буква";
+            String[] arrayStr = str.split(" ");
+            for (int i = 0; i < arrayStr.length; i++) {
+                if (i == 0) {
+                    arrayStr[i] = "Имя: " + arrayStr[i];
+                } else if (i == 1) {
+                    arrayStr[i] = "Отчество: " + arrayStr[i];
+                } else {
+                    arrayStr[i] = "Фамилия: " + arrayStr[i];
                 }
-                return false;//"длинна";
-
             }
-            return false;//"false null"
 
+            return arrayStr;
         }
+
+        return new String[]{"null"};
+    }//12
+
+    /** 13
+     * Написать метод, который возвращает сумму всех букв слова
+     *
+     * “abc” → 294
+     * “ABC” → 198
+     * “123” → 0 (это не буквы)   */
+
+    public static int getSumOfNumbers(String str) {
+        if (str != null) {
+            if (str.isEmpty()) {
+                return 0;
+            }
+            int sum = 0;
+            for (int i = 0; i < str.length(); i++) {
+                if (str.charAt(i) > 64 && str.charAt(i) < 91 || str.charAt(i) > 96 && str.charAt(i) < 123) {
+                    sum += str.charAt(i);
+                }
+            }
+            return sum;
+        }
+        return Integer.MIN_VALUE;
+    }// 13 ввести проверку на цифры
 
 
 
@@ -399,7 +379,7 @@ public static String[] getArrayFIO(String str) {
         System.out.println(capitalizeWords(null));
         // System.out.println(capitalizeWords("   john jacob smith jr."));
         // System.out.println(capitalizeWords(""));
-        // System.out.println(capitalizeWords("   happy birthday!    "));
+        // System.out.println(capita  lizeWords("   happy birthday!    "));
 
 
 /** 1
@@ -483,35 +463,35 @@ public static String[] getArrayFIO(String str) {
         System.out.println(getCount(""));
         System.out.println(getCount(null));
 
- /** 6
-  * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java. */
+        /** 6
+         * Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java. */
 
-   String str6 = "As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current" +
-           " long-term support (LTS) versions. Oracle released the last zero-cost public update for the " +
-           "legacy version Java 8 LTS in January 2019 for commercial use, although it will otherwise still " +
-           "support Java 8 with public updates for personal use indefinitely. Other vendors have begun to offer " +
-           "zero-cost builds of OpenJDK 8 and 11 that are still receiving security and other upgrades.";
+        String str6 = "As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current" +
+                " long-term support (LTS) versions. Oracle released the last zero-cost public update for the " +
+                "legacy version Java 8 LTS in January 2019 for commercial use, although it will otherwise still " +
+                "support Java 8 with public updates for personal use indefinitely. Other vendors have begun to offer " +
+                "zero-cost builds of OpenJDK 8 and 11 that are still receiving security and other upgrades.";
 
-   String str6_1 = "As a decrepit father takes delight\n" +
-           "To see his active child do deeds of youth,\n" +
-           "So I, made lame by fortune’s dearest spite,\n" +
-           "Take all my comfort of thy worth and truth.\n" +
-           "For whether beauty, birth, or wealth, or wit,\n" +
-           "Or any of these all, or all, or more,\n" +
-           "Entitled in thy parts do crownèd sit,\n" +
-           "I make my love engrafted to this store.\n" +
-           "So then I am not lame, poor, nor despised,\n" +
-           "Whilst that this shadow doth such substance give\n" +
-           "That I in thy abundance am sufficed,\n" +
-           "And by a part of all thy glory live.\n" +
-           "Look what is best, that best I wish in thee.\n" +
-           "This wish I have; then ten times happy me.";
+        String str6_1 = "As a decrepit father takes delight\n" +
+                "To see his active child do deeds of youth,\n" +
+                "So I, made lame by fortune’s dearest spite,\n" +
+                "Take all my comfort of thy worth and truth.\n" +
+                "For whether beauty, birth, or wealth, or wit,\n" +
+                "Or any of these all, or all, or more,\n" +
+                "Entitled in thy parts do crownèd sit,\n" +
+                "I make my love engrafted to this store.\n" +
+                "So then I am not lame, poor, nor despised,\n" +
+                "Whilst that this shadow doth such substance give\n" +
+                "That I in thy abundance am sufficed,\n" +
+                "And by a part of all thy glory live.\n" +
+                "Look what is best, that best I wish in thee.\n" +
+                "This wish I have; then ten times happy me.";
 
 
         printTaskNumber();
-        System.out.println(getContains(str6));
-        System.out.println(getContains(str6_1));
-        System.out.println(getContains(null));
+        System.out.println(isContainsJavaWords(str6));
+        System.out.println(isContainsJavaWords(str6_1));
+        System.out.println(isContainsJavaWords(null));
 
 /** 7
  * Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки,
@@ -522,6 +502,8 @@ public static String[] getArrayFIO(String str) {
  */
 
         printTaskNumber();
+        System.out.println(addQuoteStartStrAndDotEndStr("One"));
+        System.out.println(addQuoteStartStrAndDotEndStr("    TWO  "));
 
 
 /** 8
@@ -545,7 +527,6 @@ public static String[] getArrayFIO(String str) {
  * “Whippersnapper”, “p” → “ppersnapp”  */
 
         printTaskNumber();
-
         String str9 = "Abracadabra";
         String str9_1 = "Whippersnapper";
 
@@ -557,8 +538,8 @@ public static String[] getArrayFIO(String str) {
  * Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
  * и заканчивается на одинаковую букву, и faulse иначе
  * Test Data:
- * 	“Abracadabra” → true
- * 	“Whippersnapper” → false
+ *     “Abracadabra” → true
+ *     “Whippersnapper” → false
  */
 
         printTaskNumber();
@@ -566,15 +547,15 @@ public static String[] getArrayFIO(String str) {
         String str10 = "Abracadabra";
         String str10_1 = "Whippersnapper";
 
-        System.out.println(getCompareStartCharAndLastChar(str10));
-        System.out.println(getCompareStartCharAndLastChar(str10_1));
-        System.out.println(getCompareStartCharAndLastChar(""));
-        System.out.println(getCompareStartCharAndLastChar(null));
+        System.out.println(isEqualsStartCharAndLastChar(str10));
+        System.out.println(isEqualsStartCharAndLastChar(str10_1));
+        System.out.println(isEqualsStartCharAndLastChar(""));
+        System.out.println(isEqualsStartCharAndLastChar(null));
 
-        System.out.println(getCompareStartCharAndLastCharV2(str10));
-        System.out.println(getCompareStartCharAndLastCharV2(str10_1));
-        System.out.println(getCompareStartCharAndLastCharV2(""));
-        System.out.println(getCompareStartCharAndLastCharV2(null));
+        System.out.println(isEqualsStartCharAndLastCharV2(str10));
+        System.out.println(isEqualsStartCharAndLastCharV2(str10_1));
+        System.out.println(isEqualsStartCharAndLastCharV2(""));
+        System.out.println(isEqualsStartCharAndLastCharV2(null));
 
 /** 11
  * Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения в виде массива слов
@@ -584,10 +565,10 @@ public static String[] getArrayFIO(String str) {
 
         printTaskNumber();
 
-        System.out.println(getStringArray("QA for Everyone").toString());
-        System.out.println(getStringArray("Александр Сергеевич Пушкин"));
-        System.out.println(getStringArray(""));
-        System.out.println(getStringArray(null));
+        System.out.println(Arrays.toString(getStringArray("QA for Everyone")));
+        System.out.println(Arrays.toString(getStringArray("Александр Сергеевич Пушкин")));
+        System.out.println(Arrays.toString(getStringArray("")));
+        System.out.println(Arrays.toString(getStringArray(null)));
 
 /** 12
  * Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии, отчества и возвращает массив строк:
@@ -603,7 +584,7 @@ public static String[] getArrayFIO(String str) {
         System.out.println(Arrays.toString(getArrayFIO(arrayFIO)));
         System.out.println(Arrays.toString(getArrayFIO("")));
         System.out.println(Arrays.toString(getArrayFIO(null)));
-   //     System.out.println(Arrays.toString(getArrayFIO()));
+        //     System.out.println(Arrays.toString(getArrayFIO()));
 
 /** 13
  * Написать метод, который возвращает сумму всех букв слова
@@ -614,46 +595,11 @@ public static String[] getArrayFIO(String str) {
 
         printTaskNumber();
 
+
         System.out.println(getSumOfNumbers("abc"));
         System.out.println(getSumOfNumbers("ABC"));
         System.out.println(getSumOfNumbers("123"));
-        System.out.println(getSumOfNumbers("A"));
-        System.out.println(getSumOfNumbers("z"));
-        System.out.println(getSumOfNumbers(null));
-        System.out.println(getSumOfNumbers(""));
-        System.out.println(getSumOfNumbers("@"));
-        System.out.println(getSumOfNumbers("{"));
-        System.out.println(getSumOfNumbers("a3c"));
-        System.out.println(getSumOfNumbers("a3c5"));
-        System.out.println(getSumOfNumbers("1a3c"));
-
- /** 14
-  * Написать метод,  который принимает на вход 2 буквы и возвращает true,
-  * если первая буква встречается раньше второй, иначе метод возвращает false
-  * method(“a”, “m”) → true
-  * method(“m”, “l”) → false   */
-
-        printTaskNumber();
-
-        System.out.println(getInfoAboutLetter("a", "2"));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        System.out.println(getSumOfNumbers("^_'"));
 
 
     }
