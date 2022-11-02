@@ -3,6 +3,7 @@ package Sergey.HW;
 import java.util.ArrayList;
 import java.util.*;
 
+
 public class Hw13_List_Iterator_Remove {
 
     public static void main(String[] args) {

@@ -1,7 +1,6 @@
 package Sergey.Lessons;
-import java.lang.StringBuilder;
 
-public class StringBuilder {
+public class StrBuilder {
 
     public static void main(String[] args) {
 
@@ -11,4 +10,8 @@ public class StringBuilder {
         resultSB.append("f");
         resultSB.append("f");
     }
+
+
+
+
 }
